@@ -1,0 +1,10 @@
+﻿# Python
+__pycache__/
+*.pyc
+
+# Flask instance
+propriedades_digitais/instance/
+*.db
+
+# Environment
+.env

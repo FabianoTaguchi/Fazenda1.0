@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Donos — Propriedades Rurais{% endblock %}
+{% block content %}
+<section class="card">
+  <h1>Cadastrar Dono</h1>
+  <form class="form" method="post">
+    <div class="form-row">
+      <label for="nome">Nome completo</label>
+      <input type="text" id="nome" name="nome" required />
+    </div>
+    <div class="form-row">
+      <label for="cpf_cnpj">CPF/CNPJ</label>
+      <input type="text" id="cpf_cnpj" name="cpf_cnpj" required />
+    </div>
+    <div class="form-row">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" />
+    </div>
+    <div class="form-row">
+      <label for="telefone">Telefone</label>
+      <input type="tel" id="telefone" name="telefone" />
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="button">Salvar Dono</button>
+      <button type="reset" class="button secondary">Limpar</button>
+    </div>
+  </form>
+</section>
+
+<section class="card">
+  <h2>Donos cadastrados</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>CPF/CNPJ</th>
+        <th>Contato</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for d in donos %}
+        <tr>
+          <td>{{ d['nome'] }}</td>
+          <td>{{ d['cpf_cnpj'] }}</td>
+          <td>{{ d['email'] or d['telefone'] or '-' }}</td>
+        </tr>
+      {% else %}
+        <tr><td colspan="3">Nenhum dono cadastrado.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}
