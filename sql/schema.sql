@@ -33,3 +33,10 @@ CREATE TABLE IF NOT EXISTS cultivo (
   FOREIGN KEY (propriedade_id) REFERENCES propriedade(id) ON DELETE CASCADE,
   FOREIGN KEY (cultura_id) REFERENCES cultura(id) ON DELETE RESTRICT
 );
+
+-- Usuários para autenticação
+CREATE TABLE IF NOT EXISTS usuario (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT NOT NULL UNIQUE,
+  password_hash TEXT NOT NULL
+);

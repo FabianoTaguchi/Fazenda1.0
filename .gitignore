@@ -3,8 +3,12 @@ __pycache__/
 *.pyc
 
 # Flask instance
-propriedades_digitais/instance/
+instance/
 *.db
 
 # Environment
 .env
+
+# Virtual environments
+.venv/
+venv/

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Entrar — Propriedades Rurais{% endblock %}
+{% block content %}
+<section class="card">
+  <h1>Entrar</h1>
+  <form class="form" method="post">
+    <div class="form-row">
+      <label for="username">Usuário</label>
+      <input type="text" id="username" name="username" required />
+    </div>
+    <div class="form-row">
+      <label for="password">Senha</label>
+      <input type="password" id="password" name="password" required />
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="button">Entrar</button>
+    </div>
+    <p style="color:#9ca3af;margin-top:12px;">Por enquanto, qualquer usuário e senha são aceitos.</p>
+  </form>
+</section>
+{% endblock %}

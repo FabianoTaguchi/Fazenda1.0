@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Donos — Propriedades Rurais{% endblock %}
+{% block title %}Proprietários — Propriedades Rurais{% endblock %}
 {% block content %}
 <section class="card">
-  <h1>Cadastrar Dono</h1>
+  <h1>Cadastrar Proprietário</h1>
   <form class="form" method="post">
     <div class="form-row">
       <label for="nome">Nome completo</label>
@@ -21,14 +21,14 @@
       <input type="tel" id="telefone" name="telefone" />
     </div>
     <div class="form-actions">
-      <button type="submit" class="button">Salvar Dono</button>
+      <button type="submit" class="button">Salvar Proprietário</button>
       <button type="reset" class="button secondary">Limpar</button>
     </div>
   </form>
 </section>
 
 <section class="card">
-  <h2>Donos cadastrados</h2>
+  <h2>Proprietários cadastrados</h2>
   <table class="table">
     <thead>
       <tr>
@@ -45,7 +45,7 @@
           <td>{{ d['email'] or d['telefone'] or '-' }}</td>
         </tr>
       {% else %}
-        <tr><td colspan="3">Nenhum dono cadastrado.</td></tr>
+        <tr><td colspan="3">Nenhum proprietário cadastrado.</td></tr>
       {% endfor %}
     </tbody>
   </table>
