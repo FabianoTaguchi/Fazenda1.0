@@ -2,7 +2,6 @@ import os
 from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
-# Necessário para uso de sessões (flash, etc.)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret-change-me')
 
 @app.route('/index')
@@ -22,8 +21,8 @@ def propriedades():
 
 @app.route('/culturas', methods=['GET'])
 def culturas():
-        culturas = []
-        return render_template('culturas.html', culturas=culturas, show_menu=True)
+    culturas = []
+    return render_template('culturas.html', culturas=culturas, show_menu=True)
 
 @app.route('/cultivos', methods=['GET'])
 def cultivos():
@@ -45,6 +44,10 @@ def login():
         flash('Login aceito.', 'success')
         return redirect(url_for('index'))
     return render_template('login.html', show_menu=False)
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    return render_template('register.html', show_menu=False)
 
 # Verifica se o arquivo é o principal do projeto
 if __name__ == '__main__':

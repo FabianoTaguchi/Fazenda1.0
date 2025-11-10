@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Criar conta — Propriedades Rurais{% endblock %}
+{% block content %}
+<section class="card">
+  <h1>Criar conta</h1>
+  <form class="form" method="post">
+    <div class="form-row">
+      <label for="username">Usuário</label>
+      <input type="text" id="username" name="username" required />
+    </div>
+    <div class="form-row">
+      <label for="password">Senha</label>
+      <input type="password" id="password" name="password" required />
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="button">Criar conta</button>
+    </div>
+  </form>
+  <p style="margin-top:16px;">
+    Já tem conta? <a href="{{ url_for('login') }}">Fazer login</a>
+  </p>
+</section>
+{% endblock %}
