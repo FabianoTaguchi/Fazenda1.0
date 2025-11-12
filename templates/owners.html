@@ -3,7 +3,7 @@
 {% block content %}
 <section class="card">
   <h1>Cadastrar Proprietário</h1>
-  <form class="form" method="post">
+  <form class="form" method="post" action="/owners/cadastrar">
     <div class="form-row">
       <label for="nome">Nome completo</label>
       <input type="text" id="nome" name="nome" required />
@@ -32,20 +32,24 @@
   <table class="table">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Nome</th>
         <th>CPF/CNPJ</th>
-        <th>Contato</th>
+        <th>Telefone</th>
+        <th>Email</th>
       </tr>
     </thead>
     <tbody>
       {% for d in donos %}
         <tr>
-          <td>{{ d['nome'] }}</td>
-          <td>{{ d['cpf_cnpj'] }}</td>
-          <td>{{ d['email'] or d['telefone'] or '-' }}</td>
+          <td>{{ d.id_proprietario}}</td>
+          <td>{{ d.nome }}</td>
+          <td>{{ d.cpf }}</td>
+          <td>{{ d.email }}</td>
+          <td>{{ d.telefone }}</td>
         </tr>
       {% else %}
-        <tr><td colspan="3">Nenhum proprietário cadastrado.</td></tr>
+        <tr><td colspan="4">Nenhum proprietário cadastrado.</td></tr>
       {% endfor %}
     </tbody>
   </table>
