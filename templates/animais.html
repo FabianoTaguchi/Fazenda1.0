@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Animais — Propriedades Rurais{% endblock %}
+{% block content %}
+<section class="card">
+  <h1>Cadastrar Animais</h1>
+  <form class="form" method="post">
+    <div class="form-row">
+      <label for="tipo">Tipo</label>
+      <input type="text" id="tipo" name="tipo" required />
+    </div>
+    <div class="form-row">
+      <label for="raca">Raça</label>
+      <input type="text" id="raca" name="raca" />
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="button">Salvar Animal</button>
+      <button type="reset" class="button secondary">Limpar</button>
+    </div>
+  </form>
+</section>
+
+<section class="card">
+  <h2>Animais cadastrados</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Raça</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in animais %}
+        <tr>
+          <td>{{ a['tipo'] }}</td>
+          <td>{{ a['raca'] or '-' }}</td>
+        </tr>
+      {% else %}
+        <tr><td colspan="2">Nenhum animal cadastrado.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

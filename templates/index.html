@@ -3,12 +3,12 @@
 {% block content %}
 <section class="card">
   <h1>Cadastro de Propriedades Rurais</h1>
-  <p>Use o menu para acessar Proprietários, Propriedades, Culturas e Cultivos.</p>
+  <p>Use o menu para acessar Proprietários, Propriedades, Animais e Cultivos.</p>
   <div class="grid">
     <a class="button" href="{{ url_for('owners') }}">Cadastrar Proprietários</a>
     <a class="button" href="{{ url_for('propriedades') }}">Cadastrar Propriedades</a>
-    <a class="button" href="{{ url_for('culturas') }}">Cadastrar Culturas</a>
-    <a class="button" href="{{ url_for('cultivos') }}">Associar Cultivos</a>
+    <a class="button" href="{{ url_for('animais') }}">Cadastrar Animais</a>
+    <a class="button" href="{{ url_for('lotes') }}">Registrar Lotes</a>
   </div>
   </section>
 {% endblock %}

@@ -1,42 +1,44 @@
+-- Database: progest2
+CREATE DATABASE IF NOT EXISTS progest2;
+USE progest2;
+
 CREATE TABLE IF NOT EXISTS dono (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  nome TEXT NOT NULL,
-  cpf_cnpj TEXT NOT NULL UNIQUE,
-  email TEXT,
-  telefone TEXT
-);
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(80) NOT NULL,
+  cpf_cnpj VARCHAR(18) NOT NULL UNIQUE,
+  email VARCHAR(120),
+  telefone VARCHAR(20)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS propriedade (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  nome TEXT NOT NULL,
-  municipio TEXT NOT NULL,
-  estado TEXT NOT NULL,
-  area_total_ha REAL NOT NULL CHECK (area_total_ha >= 0),
-  dono_id INTEGER NOT NULL,
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(120) NOT NULL,
+  municipio VARCHAR(80) NOT NULL,
+  estado VARCHAR(80) NOT NULL,
+  area_total_ha DECIMAL(10,2) NOT NULL,
+  dono_id INT NOT NULL,
   FOREIGN KEY (dono_id) REFERENCES dono(id) ON DELETE RESTRICT
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE IF NOT EXISTS cultura (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  nome TEXT NOT NULL,
-  especie TEXT,
-  ciclo TEXT CHECK (ciclo IN ('Anual','Perene'))
-);
+CREATE TABLE IF NOT EXISTS animal (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  tipo VARCHAR(80) NOT NULL,
+  raca VARCHAR(80)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE IF NOT EXISTS cultivo (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  propriedade_id INTEGER NOT NULL,
-  cultura_id INTEGER NOT NULL,
-  area_cultivada_ha REAL NOT NULL CHECK (area_cultivada_ha >= 0),
-  data_plantio DATE,
-  data_colheita_prevista DATE,
+CREATE TABLE IF NOT EXISTS lote (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  propriedade_id INT NOT NULL,
+  animal_id INT NOT NULL,
+  quantidade INT NOT NULL,
+  data_registro DATE,
   FOREIGN KEY (propriedade_id) REFERENCES propriedade(id) ON DELETE CASCADE,
-  FOREIGN KEY (cultura_id) REFERENCES cultura(id) ON DELETE RESTRICT
-);
+  FOREIGN KEY (animal_id) REFERENCES animal(id) ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Usuários para autenticação
 CREATE TABLE IF NOT EXISTS usuario (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  username TEXT NOT NULL UNIQUE,
-  password_hash TEXT NOT NULL
-);
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(80) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
